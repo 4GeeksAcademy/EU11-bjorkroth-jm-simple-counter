@@ -10,3 +10,24 @@
     import 'relative/path/to/stylesheet.scss';
 
 */
+
+.myCounter{
+    background-color: black;
+    text-align: center;
+}
+
+.myCounter div{
+    display: inline-block;
+    font-size: 170px;
+    line-height: 190px;
+    background-color: #131313;
+    color: white;
+    padding: 10px;
+    margin: 10px;
+    border-radius: 20px;
+    width: 130px;
+}
+
+.clock{
+    width: 170px !important;
+}

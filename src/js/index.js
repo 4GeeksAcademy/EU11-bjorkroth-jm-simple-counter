@@ -6,7 +6,9 @@ import ReactDOM from "react-dom";
 import "../styles/index.css";
 
 //import your own components
-import Home from "./component/home.jsx";
+import ClockComponent from "./component/counter.jsx";
+import { SecondsCounter } from "./component/counter.jsx";
 
-//render your react application
-ReactDOM.render(<Home />, document.querySelector("#app"));
+//render your react applicat
+//ReactDOM.render(<ClockComponent />, document.querySelector("#app"));
+ReactDOM.render(<SecondsCounter />, document.querySelector("#app"));
