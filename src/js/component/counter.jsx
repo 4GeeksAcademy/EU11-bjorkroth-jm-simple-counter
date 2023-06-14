@@ -1,10 +1,49 @@
 import React, { useEffect, useState } from "react";
 import { render } from "react-dom";
 
-// 
+// NOT WORKING TO IMPORT ICON
 //import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 //import { faClock } from "@fortawesome/free-solid-svg-icons";
 //const clockIcon = <FontAwesomeIcon icon="fa-solid fa-clock" />;
+
+function SecondsCounterClean(){
+    const [seconds, setSeconds] = useState(0);
+
+    // Update the state at an interval of 1 sec.
+    useEffect(() => {
+        // setInterval takes a function and calls it every interval
+        const interval = setInterval( () => {
+            // We use our setState function to update the state by adding 1 to its current value
+            setSeconds((currentState) => currentState+1);
+        }, 1000);
+
+        // To avoind memory leaking (interval saving all calculations) we  
+        return () => clearInterval(interval);
+
+        // dependency: list of all reactive values referenced inside of the setup code (the useEffect function)
+    }, [setSeconds])
+
+    const digitSix = Math.floor(seconds/100000)%10;
+    const digitFive = Math.floor(seconds/10000)%10;
+    const digitFour = Math.floor(seconds/1000)%10;
+    const digitThree = Math.floor(seconds/100)%10;
+    const digitTwo = Math.floor(seconds/10)%10;
+    const digitOne = Math.floor(seconds/1%10)
+
+    return(
+        <div className="myCounter">
+            <div className="clock">±</div>
+            <div className="six">{digitSix}</div>
+            <div className="five">{digitFive}</div>
+            <div className="four">{digitFour}</div>
+            <div className="three">{digitThree}</div>
+            <div className="two">{digitTwo}</div>
+            <div className="one">{digitOne}</div> 
+        </div>
+        );
+};
+
+export {SecondsCounterClean}
 
 //create your first component
 function ClockComponent(){
@@ -89,28 +128,3 @@ function SecondsCounter(){
 
 
 export {SecondsCounter}
-
-//<FontAwesomeIcon icon="fa-regular fa-clock-nine" /> 
-
-
-
-// function SecondsCounterClean(){
-//     const [seconds, setSeconds] = useState(0);
-
-//     useEffect( function () {
-//         const interval = setInterval( function() {
-//             setSeconds((oldValueOfSeconds)+1) }, 1000);
-//     }, []);
-    
-//     return (
-//         <div className="myCounter">
-//             <div className="clock">±</div>
-//             <div className="six">0</div>
-//             <div className="five">0</div>
-//             <div className="four">0</div>
-//             <div className="three">0</div>
-//             <div className="two">0</div>
-//             <div className="one">{seconds}</div> 
-//         </div>
-//     );
-// };
